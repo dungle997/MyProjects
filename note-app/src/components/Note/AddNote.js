@@ -1,7 +1,9 @@
 import './AddNote.css'
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {addNote} from '../../redux/actions'
+import noteListSlice, { addDatas } from './NoteListSlice'
+
+
 function AddNote(){
     const dispatch = useDispatch()
     let limit = 300
@@ -13,7 +15,8 @@ function AddNote(){
     }
     const handleOnClick = () => {
         if (text.trim().length > 0){
-            dispatch(addNote(text))
+            // dispatch(noteListSlice.actions.addNote(text))
+            dispatch(addDatas(text))
             setText('')
         }
     }

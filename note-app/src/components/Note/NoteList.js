@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 import {noteListRemaining} from '../../redux/selector'
 function NoteList(){
     const datas = useSelector(noteListRemaining)
+    // const datas = useSelector( state => state.noteList)
     return (
         <div className="note-list" >
             {datas.map(data => {

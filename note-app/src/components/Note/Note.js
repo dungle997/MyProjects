@@ -3,7 +3,7 @@ import {MdDeleteForever} from 'react-icons/md'
 import {MdEditNote} from 'react-icons/md'
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
-import {deleteNote, editNote} from '../../redux/actions'
+import noteListSlice, { deleteDatas, editDatas } from './NoteListSlice'
 
 function Note({id, text, date}){
     const dispatch = useDispatch() 
@@ -11,7 +11,8 @@ function Note({id, text, date}){
     const [input, setInput] = useState(text)
     let limit = 300
     const handleOnClick = () => {
-        dispatch(deleteNote(id))
+        // dispatch(noteListSlice.actions.deleteNote(id))
+        dispatch(deleteDatas(id))
     }
     const handleEditClick = () => {
         setState(true)
@@ -23,7 +24,8 @@ function Note({id, text, date}){
     }
     const handleSaveClick = () => {
         if (input.trim().length > 0){
-            dispatch(editNote(id, input))
+            // dispatch(noteListSlice.actions.editNote({id, text: input}))
+            dispatch(editDatas({id, text: input}))
             setState(false)
         }
     }

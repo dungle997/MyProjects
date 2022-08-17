@@ -1,11 +1,11 @@
 import './Search.css'
 import {MdSearch} from 'react-icons/md'
 import {useDispatch} from 'react-redux'
-import {updateSearch} from '../../redux/actions'
-function Search({handleSearch}){
+import searchSlice from './SearchSlice'
+function Search(){
     const dispatch = useDispatch()
     const handleOnChange = (e) => {
-        dispatch(updateSearch(e.target.value))
+        dispatch(searchSlice.actions.addSearch(e.target.value))
     }
     return (
         <div className="search">
