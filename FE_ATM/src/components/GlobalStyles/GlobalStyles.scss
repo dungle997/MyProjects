@@ -1,0 +1,22 @@
+@import 'normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root{
+    ---primary-color: rgb(28, 28, 30);
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    font-size: 1.6rem;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+}

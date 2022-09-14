@@ -1,0 +1,12 @@
+.atm{
+    flex: 1;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    .atm__button--delete{
+        margin-left: 40px;
+
+    }
+}

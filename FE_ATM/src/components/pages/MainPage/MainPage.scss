@@ -1,0 +1,30 @@
+.mainpage{
+    display: flex;
+    flex-direction: column;
+    &__content{
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+
+.list__atm{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    // display: flex;
+    flex: 2;
+    // margin-right: 36px;
+}
+
+.queue{
+    flex: 1;
+    background-color: #fff;
+    &__inner{
+        background-color: #ccc;
+        padding: 10px 10px 5px;
+        border-radius: 5px;
+    }
+    // &__item{
+    //     background-color: #fff;
+    // }
+}
+
