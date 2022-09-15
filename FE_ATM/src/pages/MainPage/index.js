@@ -6,6 +6,7 @@ import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {loadDatas} from '../../redux/loadUserSlice'
 import {loadDatasAtm} from '../../redux/loadAtmSlice'
+import {loadProcessed} from '../../redux/loadProcessedSlice' 
 import {useSelector} from 'react-redux'
 import LoadAtm from '../../components/LoadingAtm/LoadAtm'
 import AddAtm from "../../components/AddingAtm/AddAtm"
@@ -14,28 +15,36 @@ function MainPage() {
     const dispatch = useDispatch()
     const listAtm = useSelector(state => state.atm.datas)
     let stateAddAtm = useSelector(state => state.header.addAtm)
+    const queces = useSelector(state => state.quece.datas)
+    const processed= useSelector(state => state.processedDone.datas)
+    const arr = processed.split(', ')
+    const subarr = arr.slice(0, 10)
+    // console.log('queces = ',queces)
+    let quece = [{   
+        name : "default",
+        transaction: 1,
+    }]
+
+    if (queces.length>0 && queces.length < 6) {
+        quece = queces.slice()
+        console.log("asjdfljalskdf")
+    }
+    else{
+        quece = queces.slice(0,5)
+        
+    }
+    // console.log("quece === ",quece)
 
     // console.log(listAtm)
-    const quecesss = [
-        {   
-            id: 1,
-            name : "Smith",
-            transaction: 9,
-        },
-        {
-            id: 2,
-            name : "Jane",
-            transaction: 9,
-        },
-        {
-            id: 3,
-            name : "Steve",
-            transaction: 9,
-        },     
-    ]
+    useEffect(()=>{
+        // dispatch(loadDatas())
+    })
+
     useEffect(()=>{
         dispatch(loadDatas())
         dispatch(loadDatasAtm())
+        dispatch(loadProcessed())
+        
     }, [])
     return ( 
         <div className="mainpage">
@@ -69,9 +78,9 @@ function MainPage() {
                         Queue
                     </Typography.Title>
                     <div className="queue__inner">
-                        {quecesss.map((user)=>{
+                        {quece.map((user, index)=>{
                             return (<LoadUser 
-                                        key = {user.id}
+                                        key = {index}
                                         name = {user.name}
                                         transaction = {user.transaction}
                                     />
@@ -81,7 +90,17 @@ function MainPage() {
                 </div>
             </div>
             <div className="mainpage__infomation">
-                <h2>Processed Client</h2>
+                <Typography.Title
+                    // editable
+                    level={4}
+                    style={{
+                    margin: 0,
+                    // fontSize: "78px",
+                    }}
+                >
+                    Prosessed Client
+                </Typography.Title>
+                <Typography.Text style={{fontSize: "18px"}}>Transaction Done: {subarr.join(', ')}</Typography.Text>
             </div>
         </div>
     );

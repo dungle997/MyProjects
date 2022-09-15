@@ -13,7 +13,7 @@ function LoadAtm({atmName, userName, status, id}) {
     }
     // console.log('asdjfljdslf = ',atmName, userName, status)
     return (   
-        <div className="atm">
+        <div className="atm" draggable >
             <div className="atm__button--delete" onClick={handleDelete}>
                 <DeleteFilled />
             </div>

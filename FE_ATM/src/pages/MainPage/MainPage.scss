@@ -9,10 +9,11 @@
 
 .list__atm{
     display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
     // display: flex;
+    justify-content: space-between;
     flex: 2;
-    // margin-right: 36px;
+
 }
 
 .queue{

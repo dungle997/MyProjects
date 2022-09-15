@@ -26,7 +26,7 @@ export const loadDatas = createAsyncThunk('quece/loadDatas', async() => {
     const data = await axios.get('/api/v1/atms/', {
         headers: {'Authorization': 'Bearer '+ token}
     })
-    console.log(data.data.queue)
+    // console.log(data.data.queue)
     return data.data.queue
 })
 
