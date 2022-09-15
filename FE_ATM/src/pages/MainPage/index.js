@@ -1,21 +1,21 @@
 import "./MainPage.scss"
-import Header from '../../Layout/common/Header'
-import LoadUser from '../MainPage/LoadUser'
+import Header from '../../components/Layout/common/Header'
+import LoadUser from '../../components/LoadingUser/LoadUser'
 import {Typography} from 'antd'
 import {useEffect} from 'react'
 import {useDispatch} from 'react-redux'
-import {loadDatas} from './loadUserSlice'
-import {loadDatasAtm} from './loadAtmSlice'
+import {loadDatas} from '../../redux/loadUserSlice'
+import {loadDatasAtm} from '../../redux/loadAtmSlice'
 import {useSelector} from 'react-redux'
-import LoadAtm from './LoadAtm'
-import AddAtm from "./AddAtm"
+import LoadAtm from '../../components/LoadingAtm/LoadAtm'
+import AddAtm from "../../components/AddingAtm/AddAtm"
 
 function MainPage() {
     const dispatch = useDispatch()
     const listAtm = useSelector(state => state.atm.datas)
     let stateAddAtm = useSelector(state => state.header.addAtm)
 
-    console.log(listAtm)
+    // console.log(listAtm)
     const quecesss = [
         {   
             id: 1,

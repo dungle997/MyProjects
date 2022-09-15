@@ -1,6 +1,6 @@
 import {nanoid} from 'nanoid'
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import axios from '../../../shared/axios'
+import axios from '../shared/axios'
 
 export default createSlice({
     name: 'quece',
@@ -21,7 +21,11 @@ export default createSlice({
 })
 
 export const loadDatas = createAsyncThunk('quece/loadDatas', async() => {
-    const data = await axios.get('/api/v1/atms/')
+    let token = JSON.parse(localStorage.getItem('user_token'))
+    
+    const data = await axios.get('/api/v1/atms/', {
+        headers: {'Authorization': 'Bearer '+ token}
+    })
     console.log(data.data.queue)
     return data.data.queue
 })

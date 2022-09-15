@@ -1,8 +1,12 @@
-import { Button, Checkbox, Form, Input } from 'antd';
+import { Button, Checkbox, Form, Input } from 'antd'
 import {useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
+import {useDispatch} from 'react-redux'
+import headerSlice from '../../redux/headerSlice'
+import {loadUserName} from '../../redux/headerSlice'
 
 function Login() {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const onFinish = (values) => {
         console.log('Success:', values);
@@ -26,6 +30,10 @@ function Login() {
                 if (res.data.PRIVATE_TOKEN){
                     localStorage.setItem('user_token', JSON.stringify(res.data.PRIVATE_TOKEN))
                     // localStorage.setItem('react-app-note-data', JSON.stringify(oldDatas))
+                    
+                   
+                    // dispatch(loadUserName())
+                    dispatch(headerSlice.actions.saveUsername(res.data.user.email))
                     navigate("/mainpage")
                 }
 
@@ -120,4 +128,4 @@ function Login() {
     );
 };
 
-export default Login;
+export default Login

@@ -1,11 +1,9 @@
 import './Header.scss'
-import {Button, Typography, Image} from 'antd'
+import {Button, Typography} from 'antd'
 import {UserOutlined} from '@ant-design/icons'
 import { useEffect } from 'react';
-import axios from '../../../../shared/axios'
-import {loadUserName} from './headerSlice'
+import headerSlice, {loadUserName} from '../../../../redux/headerSlice'
 import {useDispatch, useSelector} from 'react-redux'
-import headerSlice from './headerSlice'
 import {useNavigate} from 'react-router-dom'
 
 
@@ -15,7 +13,7 @@ function Header() {
     const dispatch = useDispatch()
     let userName = useSelector(state => state.header.userName)
     let stateAddAtm = useSelector(state => state.header.addAtm)
-    console.log(stateAddAtm)
+    // console.log(stateAddAtm)
     useEffect (()=>{
         dispatch(loadUserName())
     }, [])
@@ -24,6 +22,7 @@ function Header() {
     }
     const handleLogOut = () => {
         navigate('/')
+        localStorage.clear()
     }
     return (  
         <div className="header">

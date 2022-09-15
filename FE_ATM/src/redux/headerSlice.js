@@ -1,6 +1,5 @@
-import {nanoid} from 'nanoid'
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
-import axios from '../../../../shared/axios'
+import axios from '../shared/axios'
 
 export default createSlice({
     name: 'header',
@@ -19,18 +18,25 @@ export default createSlice({
         },
         statusAddAtm: (state, action) => {
             state.addAtm = action.payload
+        },
+        saveUsername: (state, action) => {
+            state.userName = action.payload
         }
     },
     extraReducers: builder => {
         builder.addCase(loadUserName.fulfilled, (state, action) => {
+            // console.log("log action = ",action.payload)
             state.userName = action.payload
         })
     }
 })
 
 export const loadUserName = createAsyncThunk('header/loadUserName', async() => {
-    const data = await axios.get('/api/v1/auth/')
-    console.log(data.data.user.email)
+    let token = JSON.parse(localStorage.getItem('user_token'))
+    const data = await axios.get('/api/v1/auth/', {
+        headers: {'Authorization': 'Bearer '+ token}
+    })
+    // console.log(data.data.user.email)
     return data.data.user.email
 })
 

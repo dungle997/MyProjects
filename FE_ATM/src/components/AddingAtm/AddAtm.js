@@ -1,10 +1,10 @@
-import {UserOutlined, DeleteFilled} from '@ant-design/icons' 
+import {UserOutlined} from '@ant-design/icons' 
 import {Input, Button} from 'antd'
 import './AddAtm.scss'
 import {useState} from 'react'
-import {addDatasAtm} from '../../pages/MainPage/loadAtmSlice'
+import {addDatasAtm} from '../../redux/loadAtmSlice'
 import {useDispatch} from 'react-redux'
-import headerSlice from '../../Layout/common/Header/headerSlice'
+import headerSlice from '../../redux/headerSlice'
 function AddAtm() {
     const dispatch = useDispatch()
     const [input, setInput] = useState('')

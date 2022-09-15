@@ -1,14 +1,14 @@
 import './LoadAtm.scss'
 import {DeleteFilled, UserOutlined} from '@ant-design/icons'
 import {Typography} from 'antd'
-import {deleteAtm} from '../MainPage/loadAtmSlice'
+import {deleteAtm} from '../../redux/loadAtmSlice'
 import {useDispatch} from 'react-redux'
 
 const {Text, Title} =  Typography
 function LoadAtm({atmName, userName, status, id}) {
     const dispatch = useDispatch()
     const handleDelete = (e) => {
-        console.log(id)
+        // console.log(id)
         dispatch(deleteAtm(id))
     }
     // console.log('asdjfljdslf = ',atmName, userName, status)

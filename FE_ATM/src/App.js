@@ -1,13 +1,12 @@
 import {Fragment} from 'react'
-import {Button} from 'antd'
+// import {Button} from 'antd'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import {publicRoutes} from './routes'
 import DefaultLayout from './components/Layout/DefaultLayout'
-import MainPage from './components/pages/MainPage'
-import Login from './components/pages/Login'
+// import MainPage from './components/pages/MainPage'
+// import Login from './components/pages/Login'
 
 function App() {
-    const loggedIn = false
     return (
         <Router>
              <div className="App">
