@@ -3,17 +3,54 @@ import {DeleteFilled, UserOutlined} from '@ant-design/icons'
 import {Typography} from 'antd'
 import {deleteAtm} from '../../redux/loadAtmSlice'
 import {useDispatch} from 'react-redux'
+import {useState, useEffect, useRef} from 'react'
+
 
 const {Text, Title} =  Typography
-function LoadAtm({atmName, userName, status, id}) {
+function LoadAtm({listAtm,setList, atmName, userName, status, id, index}) {
+    // console.log('listAtm', listAtm)
+    // console.log(setList)
     const dispatch = useDispatch()
     const handleDelete = (e) => {
-        // console.log(id)
         dispatch(deleteAtm(id))
     }
-    // console.log('asdjfljdslf = ',atmName, userName, status)
+    // console.log('listAtm',listAtm)
+    const dragItem = useRef();
+    const dragOverItem = useRef();
+    
+
+    const dragStart = (e, position) => {
+        dragItem.current = position;
+        console.log('dragItem = ',dragItem)
+        console.log(e.target.innerHTML);
+      };
+      const dragEnter = (e, position) => {
+        dragOverItem.current = position;
+        console.log('dragOverItem = ',dragOverItem)
+        // console.log(e.target.innerHTML);
+      };
+      const drop = (e) => {
+        const copyListItems = [...listAtm];
+        console.log('mang moi', copyListItems)
+        const dragItemContent = copyListItems[dragItem.current];
+        console.log('dragItemContent la thang dc chon = ',dragItemContent)
+        copyListItems.splice(dragItem.current, 1);
+        console.log('copyListItems sau khi xoa thang dc chon = ',copyListItems)
+        copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+        console.log('copyListItems sau them thang dc chon vao vi tri thang bi thay the = ',copyListItems)
+        dragItem.current = null;
+        dragOverItem.current = null;
+        setList(copyListItems);
+      };
+
     return (   
-        <div className="atm" draggable >
+        <div className="atm"
+            onDragStart={(e) => dragStart(e, index)}
+            onDragEnter={(e) => dragEnter(e, index)}
+            onDragEnd={drop}
+            onDragOver={(e) => e.preventDefault()}
+            draggable
+        >
             <div className="atm__button--delete" onClick={handleDelete}>
                 <DeleteFilled />
             </div>
