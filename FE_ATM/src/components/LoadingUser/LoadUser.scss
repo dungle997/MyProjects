@@ -1,6 +1,36 @@
-.load__items{
-    background-color: #fff;
-}
 .load__list{
     padding-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+    &--wrapper{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        // border: solid 1px #000;
+
+        // align-items: center;
+        .load__items{
+            flex: 2;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            border: solid 1px #ccc;
+            padding-left: 16px;
+        }
+    
+        .load__items--image{
+            flex: 1;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: solid 1px #000;
+
+        }
+    }
+    
 }

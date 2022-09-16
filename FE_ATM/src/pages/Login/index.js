@@ -50,10 +50,38 @@ function Login() {
         <Form
             name="basic"
             labelCol={{
-            span: 8,
+                xs:
+                {
+                    span: 0,
+                },
+                md: {
+                    span: 6
+                },
+                xxl: {
+                    span: 8,
+                }
             }}
             wrapperCol={{
-            span: 7,
+                xs: {
+                    offset: 0,
+                    span: 24,
+                },
+                sm: {
+                    offset: 0,
+                    span: 16,
+                }, 
+                md: {
+                    offset: 0,
+                    span: 14,
+                },
+                xl: {
+                    offset: 0,
+                    span: 14,
+                },
+                xxl: {
+                    offset: 0,
+                    span: 8,
+                }
             }}
             initialValues={{
             remember: true,
@@ -78,6 +106,16 @@ function Login() {
             <Form.Item
             label="Password"
             name="password"
+            // wrapperCol={{
+            //     xs: {
+            //         offset: 0,
+            //         span: 24,
+            //     },
+            //     sm: {
+            //         offset: 0,
+            //         span: 8,
+            //     }
+            // }}
             rules={[
                 {
                 required: true,
@@ -92,8 +130,31 @@ function Login() {
             name="remember"
             valuePropName="checked"
             wrapperCol={{
-                offset: 8,
-                span: 8,
+                xs: {
+                    offset: 0,
+                    span: 24,
+                },
+                sm: {
+                    offset: 0,
+                    span: 8,
+                },
+                md: {
+                    offset: 3,
+                    span: 16
+                }, 
+                lg: {
+                    offset: 3,
+                    span: 16
+                }, 
+                xl: {
+                    offset: 4,
+                    span: 16
+                },
+                xxl: {
+                    offset: 8,
+                    span: 16
+                }
+                
             }}
             >
             <Checkbox>Remember me</Checkbox>
@@ -101,28 +162,56 @@ function Login() {
     
             <Form.Item
             wrapperCol={{
-                offset: 11,
-                span: 8,
+                xs: {
+                    offset: 9,
+                    span: 8,
+                },
+                sm: {
+                    offset: 10,
+                    span: 8,
+                },
+                md: {
+                    offset: 11,
+                    span: 16
+                }, 
+                // xxl: {
+                //     offset: 11,
+                //     span: 16
+                // }
             }}
             >
             <Button type="primary" htmlType="submit">
                 Login
             </Button>
             </Form.Item>
-            <Form.Item
-            wrapperCol={{
-                xs: {
-                    span: 24,
-                    offset: 8
-                  },
-                  sm: {
-                    span: 16,
-                    offset: 11
-                  }
-            }}
-            >
-            <Link to="/register">Register Account</Link>
-            </Form.Item>
+            <div className="link_register">
+                <Form.Item
+                wrapperCol={{
+                    xs: {
+                        span: 24,
+                        offset: 7
+                      },
+                      sm: {
+                        span: 16,
+                        offset: 8
+                      },
+                      md: {
+                        offset: 10,
+                        span: 16
+                      }, 
+                      lg: {
+                        offset: 11,
+                        span: 16
+                      },
+                      xxl: {
+                        offset: 11,
+                        span: 16
+                        }
+                }}
+                >
+                <Link to="/register">Register Account</Link>
+                </Form.Item>
+            </div>
         </Form>
     </div>
     );
