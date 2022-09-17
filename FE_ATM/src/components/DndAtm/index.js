@@ -23,7 +23,7 @@ function DndAtm({listAtm}) {
     };
     const dragEnter = (e, position) => {
         dragOverItem.current = position;
-       
+    //    console.log(dragOverItem)
         // console.log(e.target.innerHTML);
     };
     const drop = (e) => {

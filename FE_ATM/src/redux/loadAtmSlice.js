@@ -1,10 +1,11 @@
 import {nanoid} from 'nanoid'
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from '../shared/axios'
-
+ 
 export default createSlice({
     name: 'atm',
-    initialState: {status: 'idle', datas: []},
+    initialState: {status: 'idle', datas: []
+    },
     reducers: {},
     extraReducers: builder => {
         builder.addCase(loadDatasAtm.pending, (state, action) => {
@@ -12,7 +13,12 @@ export default createSlice({
         })
         .addCase(loadDatasAtm.fulfilled, (state, action) => {
             state.status = 'idle'
-            state.datas = action.payload
+            // console.log('arr = ',action.payload)
+            state.datas = action.payload.map((atm, index) => {
+                return {...atm, index: index}
+            })
+            
+
         })
         .addCase(addDatasAtm.fulfilled, (state, action) => {
             state.datas = action.payload

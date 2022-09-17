@@ -37,23 +37,29 @@ function MainPage() {
     // console.log("quece === ",quece)
 
     // console.log(listAtm)
-    useEffect(()=>{
-        // dispatch(loadDatas())
-    })
 
     useEffect(()=>{
-        dispatch(loadDatas())
-        dispatch(loadDatasAtm())
-        dispatch(loadProcessed())
+        // dispatch(loadDatas())
+        // dispatch(loadDatasAtm())
         
+    }, [])
+    useEffect(()=>{
+        dispatch(loadProcessed())
+        const timerId = setInterval(()=>{
+            dispatch(loadDatas())
+            dispatch(loadDatasAtm())
+
+        }, 2000)
+        return () => clearInterval(timerId)
+
     }, [])
     return ( 
         <div className="mainpage">
             <Header/>
             <div className="mainpage__content"> 
                 <div className="list__atm">
-                    {listAtm && <DndAtm listAtm={listAtm}/>}
-                    {stateAddAtm && <AddAtm />} 
+                    {/* {listAtm && <DndAtm listAtm={listAtm}/>}
+                    {stateAddAtm && <AddAtm />}  */}
                    
 
                     
