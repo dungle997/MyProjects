@@ -8,13 +8,11 @@ import {loadDatas} from '../../redux/loadUserSlice'
 import {loadDatasAtm} from '../../redux/loadAtmSlice'
 import {loadProcessed} from '../../redux/loadProcessedSlice' 
 import {useSelector} from 'react-redux'
-import LoadAtm from '../../components/LoadingAtm/LoadAtm'
 import AddAtm from "../../components/AddingAtm/AddAtm"
 import DndAtm from '../../components/DndAtm'
 
 function MainPage() {
     const dispatch = useDispatch()
-    const listAtm = useSelector(state => state.atm.datas)
     let stateAddAtm = useSelector(state => state.header.addAtm)
     const queces = useSelector(state => state.quece.datas)
     const processed= useSelector(state => state.processedDone.datas)
@@ -58,8 +56,8 @@ function MainPage() {
             <Header/>
             <div className="mainpage__content"> 
                 <div className="list__atm">
-                    {/* {listAtm && <DndAtm listAtm={listAtm}/>}
-                    {stateAddAtm && <AddAtm />}  */}
+                    <DndAtm/>
+                    {stateAddAtm && <AddAtm />} 
                    
 
                     

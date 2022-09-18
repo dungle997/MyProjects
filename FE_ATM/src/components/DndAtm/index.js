@@ -1,17 +1,21 @@
-import LoadAtm from '../LoadingAtm/LoadAtm'
+// import LoadAtm from '../LoadingAtm/LoadAtm'
 import './DndAtm.scss'
 import {useState, useEffect, useRef} from 'react'
-import {DeleteFilled, UserOutlined} from '@ant-design/icons'
+import {DeleteFilled, CloseCircleOutlined} from '@ant-design/icons'
 import {Typography} from 'antd'
 import {deleteAtm} from '../../redux/loadAtmSlice'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import loadAtmSlice from '../../redux/loadAtmSlice'
+import images from '../../assets/images'
 
-function DndAtm({listAtm}) { 
+function DndAtm() { 
+    const dispatch = useDispatch() 
     const {Text, Title} =  Typography
-    const [list, setList] = useState(listAtm)
-    useEffect(()=>{
-        setList(listAtm)
-    }, [listAtm])
+    // const [list, setList] = useState(listAtm)
+    // useEffect(()=>{
+    //     setList(listAtm)
+    // }, [listAtm])
+    const list = useSelector(state => state.atm.datas) 
     const dragItem = useRef();
     const dragOverItem = useRef();
 
@@ -37,9 +41,9 @@ function DndAtm({listAtm}) {
         
         dragItem.current = null;
         dragOverItem.current = null;
-        setList(copyListItems);
+        dispatch(loadAtmSlice.actions.dndstate(copyListItems))
+        // setList(copyListItems);
     };
-    const dispatch = useDispatch() 
     const handleDelete = (id) => {
         console.log(id)
         dispatch(deleteAtm(id))
@@ -58,12 +62,13 @@ function DndAtm({listAtm}) {
                         key={atm.id}
                     >
                         <div className="atm__button--delete" onClick={()=> handleDelete(atm.id)}>
-                            <DeleteFilled />
+                            <CloseCircleOutlined />
                         </div>
                         <div className="atm__image">
-                            <div style={{fontSize: "80px"}}>
+                            {/* <div style={{fontSize: "80px"}}>
                                 <UserOutlined />
-                            </div>
+                            </div> */}
+                            <img src={images.atm} alt="logo ATM" width='100px'/>
                         </div>
                         <div className="atm__status">
                             <Title level={2} style={{color: "pink"}}>{atm.status}</Title>

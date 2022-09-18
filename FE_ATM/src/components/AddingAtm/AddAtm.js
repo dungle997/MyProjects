@@ -1,4 +1,5 @@
 import {UserOutlined} from '@ant-design/icons' 
+import images from '../../assets/images'
 import {Input, Button} from 'antd'
 import './AddAtm.scss'
 import {useState} from 'react'
@@ -24,13 +25,11 @@ function AddAtm() {
        
             <div className="atm atm--border">
                 <div className="atm__add--header">
-                    {/* <div className="atm__button--delete" onClick={handleDelete}>
-                        <DeleteFilled />
-                    </div> */}
-                    <div className="atm__image">
-                        <div style={{fontSize: "80px"}}>
+                    <div className="atm__image" style={{paddingTop: '10px', paddingBottom: '10px' }}>
+                        {/* <div style={{fontSize: "80px"}}>
                             <UserOutlined />
-                        </div>
+                        </div> */}
+                        <img src={images.atm} alt="logo ATM" width='100px'/>
                     </div>
                     <Input placeholder="ATM name" onChange={handleOnchange} value={input}/>  
                 </div>    
