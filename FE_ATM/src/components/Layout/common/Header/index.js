@@ -12,8 +12,7 @@ function Header() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     let userName = useSelector(state => state.header.userName)
-    let stateAddAtm = useSelector(state => state.header.addAtm)
-    // console.log(stateAddAtm)
+
     useEffect (()=>{
         dispatch(loadUserName())
     }, [])

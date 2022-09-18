@@ -1,4 +1,4 @@
-import {UserOutlined} from '@ant-design/icons' 
+// import {UserOutlined} from '@ant-design/icons' 
 import images from '../../assets/images'
 import {Input, Button} from 'antd'
 import './AddAtm.scss'

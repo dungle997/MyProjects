@@ -1,7 +1,7 @@
 // import LoadAtm from '../LoadingAtm/LoadAtm'
 import './DndAtm.scss'
-import {useState, useEffect, useRef} from 'react'
-import {DeleteFilled, CloseCircleOutlined} from '@ant-design/icons'
+import {useRef} from 'react'
+import {CloseCircleOutlined} from '@ant-design/icons'
 import {Typography} from 'antd'
 import {deleteAtm} from '../../redux/loadAtmSlice'
 import {useDispatch, useSelector} from 'react-redux'
@@ -10,7 +10,7 @@ import images from '../../assets/images'
 
 function DndAtm() { 
     const dispatch = useDispatch() 
-    const {Text, Title} =  Typography
+    const {Title} =  Typography
     // const [list, setList] = useState(listAtm)
     // useEffect(()=>{
     //     setList(listAtm)

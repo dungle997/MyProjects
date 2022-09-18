@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Register.scss";
 import axios from '../../shared/axios'
 import {Link} from 'react-router-dom'
 import {
-  AutoComplete,
+  // AutoComplete,
   Button,
-  Cascader,
+  // Cascader,
   Checkbox,
-  Col,
+  // Col,
   Form,
   Input,
-  InputNumber,
-  Row,
-  Select
+  // InputNumber,
+  // Row,
+  // Select
 } from "antd";
 
-const { Option } = Select;
+// const { Option } = Select;
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -75,46 +75,46 @@ const Register = () => {
         .catch(console.log);
   };
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70
-        }}
-      >
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
-  const suffixSelector = (
-    <Form.Item name="suffix" noStyle>
-      <Select
-        style={{
-          width: 70
-        }}
-      >
-        <Option value="USD">$</Option>
-        <Option value="CNY">¥</Option>
-      </Select>
-    </Form.Item>
-  );
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
+  // const prefixSelector = (
+  //   <Form.Item name="prefix" noStyle>
+  //     <Select
+  //       style={{
+  //         width: 70
+  //       }}
+  //     >
+  //       <Option value="86">+86</Option>
+  //       <Option value="87">+87</Option>
+  //     </Select>
+  //   </Form.Item>
+  // );
+  // const suffixSelector = (
+  //   <Form.Item name="suffix" noStyle>
+  //     <Select
+  //       style={{
+  //         width: 70
+  //       }}
+  //     >
+  //       <Option value="USD">$</Option>
+  //       <Option value="CNY">¥</Option>
+  //     </Select>
+  //   </Form.Item>
+  // );
+  // const [autoCompleteResult, setAutoCompleteResult] = useState([]);
 
-  const onWebsiteChange = (value) => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(
-        [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-      );
-    }
-  };
+  // const onWebsiteChange = (value) => {
+  //   if (!value) {
+  //     setAutoCompleteResult([]);
+  //   } else {
+  //     setAutoCompleteResult(
+  //       [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
+  //     );
+  //   }
+  // };
 
-  const websiteOptions = autoCompleteResult.map((website) => ({
-    label: website,
-    value: website
-  }));
+  // const websiteOptions = autoCompleteResult.map((website) => ({
+  //   label: website,
+  //   value: website
+  // }));
   return (
     <Form
       {...formItemLayout}
@@ -198,7 +198,8 @@ const Register = () => {
         {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          {/* I have read the <a href="">agreement</a> */}
+          I have read the agreement
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>

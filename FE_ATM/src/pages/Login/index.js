@@ -3,7 +3,7 @@ import {useNavigate, Link} from 'react-router-dom'
 import axios from 'axios'
 import {useDispatch} from 'react-redux'
 import headerSlice from '../../redux/headerSlice'
-import {loadUserName} from '../../redux/headerSlice'
+// import {loadUserName} from '../../redux/headerSlice'
 
 function Login() {
     const dispatch = useDispatch()

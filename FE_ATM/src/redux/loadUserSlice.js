@@ -1,4 +1,3 @@
-import {nanoid} from 'nanoid'
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from '../shared/axios'
 
