@@ -1,20 +1,15 @@
-import { useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, ScrollView} from 'react-native';
 import Header from '../../components/Header';
-import {useDispatch} from 'react-redux'
-import { loadDatasAtm } from '../../redux/loadAtmSlice';
-import { loadProcessed } from '../../redux/loadProcessedSlice';
-import { loadDatas } from '../../redux/loadUserSlice';
 import LoadingAtm from '../../components/LoadingAtm';
+import AddingAtm from '../../components/AddingAtm';
+import LoadUser from '../../components/LoadingUser/LoadUser';
+import useMainPage from './useMainPage';
 
-
-const MainPage = ({navigation}) => {
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        dispatch(loadDatas())
-        dispatch(loadDatasAtm())
-        dispatch(loadProcessed())
-    }, [])
+const MainPage = () => {
+    const {
+        stateAddAtm,
+        subarr,
+    } = useMainPage()
     return (  
         <ScrollView>
             <View style={styles.mainpage}>
@@ -22,16 +17,17 @@ const MainPage = ({navigation}) => {
                 <View style={styles.mainpage__content}>
                     <View style={styles.list__atm}>
                         <LoadingAtm/>
+                        {stateAddAtm && <AddingAtm/>}
                     </View>
     
                     <View style={styles.quece}>
-                        <Text>quece</Text>
+                        <LoadUser/>
                     </View>
     
                 </View>
     
                 <View style={styles.mainpage__infomation}>
-                    <Text>infomation</Text>
+                    <Text style={{fontSize: 16}}>Transaction Done: {subarr.join(', ')}</Text>
                 </View>
                 
             </View>
@@ -55,10 +51,16 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },  
     quece: {
-        // flex: 1
+        marginTop: 24,
+        backgroundColor: 'black',
+        paddingBottom: 4,
+        paddingTop: 4,
+        marginLeft: 12,
+        marginRight: 12,
+        borderRadius: 8,
     },  
     mainpage__infomation: {
-
+        padding: 12,
     }
 })
 export default MainPage;

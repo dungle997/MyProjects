@@ -1,21 +1,28 @@
-import React, {useState} from "react";
 import { StyleSheet, Text, View, TextInput, TouchableOpacity} from 'react-native';
-// import {  } from "@react-native-material/core";
-// import useLogin from './useLogin'
+import useRegister from './useRegister';
 
 const Register = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirm, setConfirm] = useState('');
-
-    // console.log('email = ',email)
-    // console.log('password = ',password)
-    // console.log('confirm = ',confirm)
-
-    // console.log('Log   log')
-    const onPressLearnMore = () => {
-        console.log("dajfklasjdfl")
-    }
+    
+    const {
+        email, 
+        setEmail,
+        password,
+        setPassword,
+        confirm,
+        setConfirm,
+        handleRegister,
+        emailError,
+        setEmailError,
+        passwordError,
+        setPasswordError,
+        confirmError,
+        setConfirmError,
+        confirmErrorNoMap,
+        setConfirmErrorNoMap,
+        login,
+        setLogin,
+        handleReturnLogin,
+    } = useRegister()
     return (
         <View style={styles.container}>
             <View style={styles.inputView}>
@@ -23,9 +30,16 @@ const Register = () => {
                     style={styles.TextInput}
                     placeholder="Email"
                     placeholderTextColor="#003f5c"
-                    onChangeText={(email) => setEmail(email)}
+                    onChangeText={(email) => { 
+                        if (email){
+                            setEmailError(false)
+                            setLogin(false)
+                        }
+                        setEmail(email)
+                    }}
                 />
             </View>
+            { emailError && <Text style={styles.message}>Please enter the Email</Text>}
             
             <View style={styles.inputView}>
                 <TextInput
@@ -33,9 +47,17 @@ const Register = () => {
                     placeholder="Password"
                     placeholderTextColor="#003f5c"
                     secureTextEntry={true}
-                    onChangeText={(password) => setPassword(password)}
+                    onChangeText={(password) => {
+                        setPassword(password)
+                        if (password) {
+                            setPasswordError(false)
+                            setLogin(false)
+                        }
+                    }}
                 />
             </View>
+            { passwordError && <Text style={styles.message}>Please enter the Password</Text>}
+
 
             <View style={styles.inputView}>
                 <TextInput
@@ -43,15 +65,27 @@ const Register = () => {
                     placeholder="Confirm Password"
                     placeholderTextColor="#003f5c"
                     secureTextEntry={true}
-                    onChangeText={(e) => setConfirm(e)}
+                    onChangeText={(e) => {
+                        setConfirm(e)
+                        if (e){
+                            setConfirmError(false)
+                            setLogin(false)
+                        }
+                        if (e === password){
+                            setConfirmErrorNoMap(false)
+                        }
+                    }}
                 />
             </View>
+            { confirmError && <Text style={styles.message}>Please enter the confirm Password</Text>}
+            { confirmErrorNoMap && <Text style={styles.message}>Those password did not match. Try again</Text>}
 
-            <TouchableOpacity style={styles.loginBtn}>
-                <Text style={styles.loginText}>REGISTER</Text>
+            <TouchableOpacity style={styles.loginBtn} onPress={handleRegister}>
+                <Text style={styles.registerText}>REGISTER</Text>
             </TouchableOpacity>
+            { login && <Text style={styles.messageSuccessed}>Registration completed successfully</Text>}
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={handleReturnLogin}>
                 <Text style={styles.register_button}>Return Login Page</Text>
             </TouchableOpacity>
            
@@ -70,7 +104,8 @@ inputView:{
     borderRadius: 30,
     width: "70%",
     height: 45,
-    marginBottom: 20,
+    marginBottom: 15,
+    // flexDirection: 'column'
     // alignItems: "center",
   },
   
@@ -81,6 +116,9 @@ TextInput: {
     // alignItems: 'center'
     // marginLeft: 20,
 },
+registerText: {
+    color: '#fff'
+},  
 loginBtn: {
     width: "80%",
     borderRadius: 25,
@@ -94,6 +132,16 @@ loginBtn: {
 register_button: {
     marginTop: 40,
     fontSize: 16
+},
+message: {
+    marginBottom: 15,
+    color: 'red',
+},
+messageSuccessed: {
+    fontSize: 16,
+    marginTop: 16,
+    color: 'green',
+    fontWeight: '500',
 }
 
 })

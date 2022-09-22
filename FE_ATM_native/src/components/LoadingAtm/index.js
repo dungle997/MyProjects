@@ -1,12 +1,10 @@
-import {useDispatch, useSelector} from 'react-redux'
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
-// import { Icon } from "@rneui/themed";
-
-// import images from '../../assets/images'
-
+import useLoadingAtm from './useLoadingAtm'
 const LoadingAtm = () =>{
-    const list = useSelector(state => state.atm.datas) 
-    console.log('list = ',list)
+    const {
+        list,
+        handleDelete,
+    } = useLoadingAtm()
     return (  
         <>
             {list && list.map((atm, index) => {
@@ -14,13 +12,14 @@ const LoadingAtm = () =>{
                 return(
                     <View style={styles.atm} key={atm.id}>
                         <View style={styles.atm__button__delete}>
-                            {/* <Icon name='close'/> */}
-                            {/* <Text>{atm.status}</Text> */}
-                            <Image 
-                                source={require('../../assets/images/close.jpg')} 
-                                style={{width: 30,
-                                        height: 30}}
-                            />
+                            <TouchableOpacity onPress={() => handleDelete(atm.id)}>
+                                <Image 
+                                        source={require('../../assets/images/close.jpg')} 
+                                        style={{width: 30,
+                                                height: 30}}
+                                    />
+                            </TouchableOpacity>
+                            
                         </View>
                         <View style={styles.atm__image}>
                             {/* <img src={images.atm} alt="logo ATM" width='100px'/> */}

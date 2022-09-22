@@ -83,7 +83,7 @@ export const addDatasAtm = createAsyncThunk('atm/addDatas', async(atmName) => {
 
 export const deleteAtm = createAsyncThunk('atm/deleteAtm', async(id) => {
     let token = JSON.parse(SyncStorage.get('user_token'))
-    const data = await axios.delete(`/api/v1/atms/${id}`, {
+    const data = axios.delete(`/api/v1/atms/${id}`, {
         headers: {'Authorization': 'Bearer '+ token}
     })
     // console.log(data)

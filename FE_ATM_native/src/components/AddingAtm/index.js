@@ -1,32 +1,44 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image} from 'react-native';
+import useAddingAtm from './useAddingAtm';
+
+
 
 const AddingAtm = () => {
+    const {
+        name,
+        setName,
+        handleCancel,
+        handleCreate,
+    } = useAddingAtm()
+
     return (    
-        <View style={styles.atm} key={atm.id}>
+        <View style={styles.atm}>
             <View style={styles.atm__image}>
                 {/* <img src={images.atm} alt="logo ATM" width='100px'/> */}
                 <Image 
                     source={require('../../assets/images/atm.png')} 
                     style={{width: 120,
-                        height: 120}}
+                        height: 120,    
+                    }}
                 />
 
-                <TextInput
+                <TextInput 
                     style={styles.TextInput}
-                    placeholder="Password"
+                    placeholder="ATM Name"
                     placeholderTextColor="#003f5c"
-                    secureTextEntry={true}
-                    onChangeText={(password) => setPassword(password)}
+                    value={name}
+                    // secureTextEntry={true}
+                    onChangeText={(e) => setName(e)}
                 />
 
             </View>
 
-            <View>
-                <TouchableOpacity style={styles.loginBtn} onPress={onPress}>
-                    <Text style={styles.loginText}>Cancel</Text>
+            <View style={styles.footer}>
+                <TouchableOpacity style={styles.addBtn} onPress={handleCancel}>
+                    <Text style={styles.addText}>Cancel</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.loginBtn} onPress={onPress}>
-                    <Text style={styles.loginText}>Create</Text>
+                <TouchableOpacity style={styles.addBtn} onPress={handleCreate}>
+                    <Text style={styles.addText}>Create</Text>
                 </TouchableOpacity>
             </View>
             
@@ -38,34 +50,50 @@ const AddingAtm = () => {
 
 const styles = StyleSheet.create({
     atm: {
-        // marginLeft: 'auto',
+        marginLeft: 22,
         // marginRight: 'auto',
-        paddingRight: 30,
-        paddingLeft: 40,
-        paddingTop: 10,
+        // paddingRight: 30,
+        padding: 16,
+        paddingTop: 24,
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
+        // alignItems: 'center',
+        justifyContent: 'center',
+        borderColor: 'thistle',
+        borderWidth: 1
+        // borderStyle:
         // align
     },
-    atm__button__delete: {
-        marginLeft: 90
+    TextInput: {
+        borderColor: 'black',
+        borderWidth: 1,
+        height: 40,
+        marginTop: 10,
+        marginBottom: 10,
+
+
     },
     atm__image: {
 
     },
-    atm__status: {
-        color: 'red',
-        fontSize: 24,
-        fontWeight: 'bold',
+    footer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
-    atm__name: {
-        fontSize: 20,
-        color: 'black',
+    addBtn: {
+        // flex: 1,
+        backgroundColor: '#1273eb',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingRight: 4,
+        paddingLeft: 4,
+
+    }, 
+    addText: {
+        height: 28,
+        // alignSelf:'stretch',
+        color: '#fff'
     },
-    atm__username: {
-        fontSize: 16,
-    },
+    
     
 })
 

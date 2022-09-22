@@ -9,7 +9,11 @@ const store = configureStore({
         atm: loadAtmSlice.reducer,
         header: headerSlice.reducer,
         processedDone: loadProcessedSlice.reducer
-    }    
+    },   
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        immutableCheck: { warnAfter: 128 },
+        serializableCheck: { warnAfter: 128 },
+      })
 })
 
 export default store
